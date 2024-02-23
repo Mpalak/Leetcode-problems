@@ -1,0 +1,32 @@
+class Solution(object):
+    def romanToInt(self, s):
+
+        romanValues = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000}
+
+        isSubstraction = False
+
+        res = 0
+
+        for i, letter in enumerate(s):
+            lastLetter = s[i - 1]
+            nextLetter = s[i + 1] if i < len(s) - 1 else 'I'
+
+            if (romanValues[letter] >= romanValues[nextLetter]):
+                if (not isSubstraction):
+                    res += romanValues[letter]
+                else:
+                    res += romanValues[letter] - romanValues[lastLetter]
+                    isSubstraction = False
+
+
+            else:
+                isSubstraction = True
+
+        return res
