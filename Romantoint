@@ -1,0 +1,28 @@
+class Solution(object):
+    def romanToInt(self, s):
+
+        romanValues = {
+            "I": 1,
+            "V": 5,
+            "X": 10,
+            "L": 50,
+            "C": 100,
+            "D": 500,
+            "M": 1000}
+
+        first_letter = len(s)
+        last_letter = first_letter - 1
+        result = 0
+        while last_letter >= 0:
+             if last_letter<first_letter -1 and romanValues[s[last_letter]] < romanValues[s[last_letter+1]]:
+                 result -=romanValues[s[last_letter]]
+             else:
+                 result += romanValues[s[last_letter]]
+             last_letter -=1
+
+        return result
+
+
+
+
+
