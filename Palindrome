@@ -1,0 +1,12 @@
+n = input("Enter number")
+length = int(len(n))
+n = str(n)
+
+for i in range(0, int(length/2+1)):
+   if n[i] != n[-i - 1]:
+      break
+
+if i < int(length/2 + 1):
+   print("not")
+else:
+   print("yes")
